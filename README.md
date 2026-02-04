@@ -148,6 +148,28 @@ The frontend HTML pages in the root directory (`index.html`, `about‑us.html`, 
 
 Please ensure your code follows the existing style and includes appropriate tests.
 
+## Uploading to GitHub
+
+This project is already set up with a local Git repository. To upload it to your GitHub account:
+
+1. **Create a new repository** on GitHub:
+   - Go to [github.com/new](https://github.com/new).
+   - Choose a name (e.g., `EGTI`), keep it public or private, and **do not** initialize with a README, .gitignore, or license.
+
+2. **Add the remote** (replace `kmagwenzi` with your GitHub username if different):
+   ```bash
+   git remote add origin https://github.com/kmagwenzi/EGTI.git
+   ```
+
+3. **Push the code**:
+   ```bash
+   git push -u origin main
+   ```
+
+4. **Verify** that the repository appears at `https://github.com/kmagwenzi/EGTI`.
+
+After pushing, you can update the remote URL in the future with `git remote set-url origin <new-url>`.
+
 ## License
 
 This project is proprietary and intended for use by the Emmanuel Global Theological Institute. All rights reserved.
