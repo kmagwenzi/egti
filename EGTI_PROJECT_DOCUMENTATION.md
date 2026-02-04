@@ -24,12 +24,6 @@ The **EGTI (Emmanuel Global Theological Institute)** project is a web applicatio
 
 ```
 /run/media/kmagwenzi/Archive/Graft/The Engineer/Graphic Design/Projects/Emmanuel Global/Emmanuel Global Theological Institute/Website/Exports/EGTI
-├── index.html                    # Home page
-├── about-us.html                 # About Us page
-├── applications.html             # Applications listing page (frontend)
-├── apply.html                    # Application submission form
-├── fees.html                     # Fees information page
-├── programs.html                 # Programs catalogue page
 ├── assets/                       # Static assets (favicons, images)
 │   ├── favicon/
 │   │   ├── android-chrome-192x192.png
@@ -117,6 +111,7 @@ The **EGTI (Emmanuel Global Theological Institute)** project is a web applicatio
 │       │           ├── EgtiApplicationTests.java
 │       │           └── egtu/                            # (possibly misnamed)
 │       └── target/                                      # Compiled output (generated)
+├── Mock Up/                     # Website mockup images
 ├── scripts/                      # Root-level JavaScript files (if any)
 └── styles/                       # Root-level CSS files (if any)
 ```
@@ -125,13 +120,15 @@ The **EGTI (Emmanuel Global Theological Institute)** project is a web applicatio
 
 ## 3. File Index with Short Descriptions
 
-### Root‑Level HTML Pages
+### Frontend Pages (Thymeleaf Templates)
+The frontend is served via Thymeleaf templates located in `backend/EGTI/src/main/resources/templates/`. These templates are rendered by the Spring Boot application.
+
 | File | Description |
 |------|-------------|
 | `index.html` | Home page of the institute, showcasing mission, vision, and course catalogue. |
 | `about-us.html` | “About Us” page with institute history, leadership, and values. |
-| `applications.html` | Frontend page for viewing submitted applications (likely a placeholder). |
-| `apply.html` | Application form for prospective students (frontend version). |
+| `applications.html` | Admin page for viewing submitted applications (requires authentication). |
+| `apply.html` | Application form for prospective students. |
 | `fees.html` | Tuition and fee structure page. |
 | `programs.html` | Overview of academic programs (degree, diploma, masters, PhD). |
 

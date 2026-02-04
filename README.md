@@ -22,7 +22,7 @@ This project is a full‑stack web application for the **Emmanuel Global Theolog
 
 ### Backend
 - **Spring Boot 3.0.6** REST API with Thymeleaf templating.
-- **MySQL database** integration via Spring Data JPA (Hibernate).
+- **PostgreSQL database** integration via Spring Data JPA (Hibernate).
 - **Application CRUD** – create, read, update, delete student applications.
 - **File upload** for profile images (stored in `uploads/profile-image/`).
 - **Pagination** for viewing submitted applications.
@@ -40,16 +40,15 @@ This project is a full‑stack web application for the **Emmanuel Global Theolog
 | Layer        | Technologies |
 |--------------|--------------|
 | **Backend**  | Java 21, Spring Boot 3.0.6, Spring Data JPA, Spring Security, Thymeleaf, Lombok |
-| **Database** | MySQL 8 (or compatible), Hibernate ORM |
+| **Database** | PostgreSQL (or compatible), Hibernate ORM |
 | **Frontend** | HTML5, CSS3, JavaScript, jQuery, Bootstrap 5.3.2 |
 | **Build Tool**| Apache Maven |
-| **Server**   | Embedded Tomcat (port 4040) |
+| **Server**   | Embedded Tomcat (port 8080, configurable via `PORT` environment variable) |
 
 ## Project Structure
 
 ```
 EGTI/
-├── index.html, about‑us.html, programs.html, fees.html, apply.html, applications.html
 ├── assets/                          # Favicons and static images
 ├── backend/EGTI/                    # Spring Boot project
 │   ├── pom.xml                      # Maven configuration
@@ -66,6 +65,7 @@ EGTI/
 │   │   ├── static/                  CSS, JS, images, Bootstrap, uploads
 │   │   └── templates/               # Thymeleaf HTML templates
 │   └── sql/init.sql                 # Database initialization script
+├── Mock Up/                         # Website mockup images
 ├── scripts/                         # Root‑level JavaScript (if any)
 └── styles/                          # Root‑level CSS (if any)
 ```
@@ -77,23 +77,21 @@ For a complete file‑by‑file description, see [`EGTI_PROJECT_DOCUMENTATION.md
 ### Prerequisites
 
 - **Java 21** (or later) – [Install OpenJDK 21](https://openjdk.org/projects/jdk/21/)
-- **MySQL 8** – [Download MySQL](https://dev.mysql.com/downloads/mysql/)
+- **PostgreSQL 14+** (or compatible) – [Download PostgreSQL](https://www.postgresql.org/download/) (or use a cloud database like Railway)
 - **Maven 3.8+** – [Install Maven](https://maven.apache.org/install.html)
 - A modern web browser (Chrome, Firefox, Edge)
 
 ### Database Configuration
 
-1. Start MySQL and create a database:
-   ```sql
-   CREATE DATABASE egti;
-   ```
-2. Update the connection settings in `backend/EGTI/src/main/resources/application.properties`:
-   ```
-   spring.datasource.url=jdbc:mysql://localhost:3306/egti
-   spring.datasource.username=your_username
-   spring.datasource.password=your_password
-   ```
-3. The application will automatically create the necessary tables on startup (`spring.jpa.hibernate.ddl-auto=update`).
+The application is configured for **PostgreSQL** and uses environment variables for database connection. You can set the following variables:
+
+- `DATABASE_URL`: JDBC URL (e.g., `jdbc:postgresql://localhost:5432/egti`)
+- `DB_USERNAME`: Database username (default `postgres`)
+- `DB_PASSWORD`: Database password
+
+Alternatively, you can edit `backend/EGTI/src/main/resources/application.properties` directly.
+
+The application will automatically create the necessary tables on startup (`spring.jpa.hibernate.ddl-auto=update`).
 
 ### Building the Backend
 
@@ -119,17 +117,29 @@ mvn spring-boot:run
 java -jar target/egti-0.0.1-SNAPSHOT.jar
 ```
 
-The application will start on **port 4040** (configurable in `application.properties`).
+The application will start on **port 8080** (configurable via the `PORT` environment variable).
 
 ### Access the Website
 
-- **Public website**: [http://localhost:4040](http://localhost:4040)
-- **Application form**: [http://localhost:4040/apply](http://localhost:4040/apply)
-- **Admin interface** (requires authentication): [http://localhost:4040/applications](http://localhost:4040/applications)
+- **Public website**: [http://localhost:8080](http://localhost:8080)
+- **Application form**: [http://localhost:8080/apply](http://localhost:8080/apply)
+- **Admin interface** (requires authentication): [http://localhost:8080/applications](http://localhost:8080/applications)
 
-Default credentials (set in `application.properties`):
-- Username: `bishop`
-- Password: `success`
+Admin credentials are configured via environment variables (defaults shown):
+
+- `ADMIN_USERNAME` (default: `admin`)
+- `ADMIN_PASSWORD` (default: `changeme`)
+
+Alternatively, you can set them directly in `application.properties`.
+
+## Deployment
+
+This project is configured for deployment on **Railway** (or any platform that supports Java/PostgreSQL). For detailed deployment instructions, see [`UPLOAD_TO_RAILWAY.md`](UPLOAD_TO_RAILWAY.md).
+
+Key deployment notes:
+- The application uses environment variables for database configuration (see [Database Configuration](#database-configuration)).
+- The default port is 8080, but Railway will inject a `PORT` environment variable.
+- A PostgreSQL database is required; Railway provides one automatically.
 
 ## Usage
 
@@ -145,7 +155,7 @@ Default credentials (set in `application.properties`):
 4. Use the **Edit** or **Delete** buttons to modify records.
 
 ### Static Pages
-The frontend HTML pages in the root directory (`index.html`, `about‑us.html`, etc.) can be opened directly in a browser or served through the Spring Boot static resources.
+The frontend is served via Thymeleaf templates located in `backend/EGTI/src/main/resources/templates/`. These templates are rendered by the Spring Boot application and provide dynamic content. The static assets (CSS, JavaScript, images) are served from the `static/` directory.
 
 ## Contributing
 
