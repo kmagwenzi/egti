@@ -4,6 +4,15 @@
 
 This project is a full‑stack web application for the **Emmanuel Global Theological Institute (EGTI)**. It provides a public‑facing website with information about the institute, its academic programs, tuition fees, and an online application system for prospective students. The backend is built with Spring Boot and manages application submissions, file uploads, and an administrative interface.
 
+## Screenshots
+
+| | |
+|:---:|:---:|
+| **Home Page** | **Programs Page** |
+| ![Home Page](Mock%20Up/Home.jpg) | ![Programs Page](Mock%20Up/Programs.jpg) |
+| **Fees Page** | **Profile Page** |
+| ![Fees Page](Mock%20Up/Fees.jpg) | ![Profile Page](Mock%20Up/Profile.jpg) |
+
 ## Features
 
 ### Frontend
