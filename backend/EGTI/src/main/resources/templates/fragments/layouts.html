@@ -1,0 +1,80 @@
+<div class="container nav w-container" th:fragment="navbar">
+    <div data-w-id="71c38047-7bb4-5f63-432e-faed53467738" data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-2 w-nav" style="opacity: 1;">
+        <div class="navbarcontainer-2 w-container">
+            <div class="navbar-content-2">
+                <div class="navbar-brand-2">
+                    <a th:href="@{/}">
+                        <img src="/images/nav-logo.png" loading="lazy" alt="" class="logo-3" width="65" height="65">
+                    </a>
+                </div>
+                <nav role="navigation" class="navbar-menu-2 w-nav-menu">
+                    <a th:href="@{/}" href="#" class="navbar-link-2 w-nav-link" style="max-width: 1200px;"><div class="nav-text">Home</div></a>
+                    <div data-hover="true" data-delay="500" class="w-dropdown" style="max-width: 1200px;">
+                        <div class="w-dropdown-toggle" id="w-dropdown-toggle-0" aria-controls="w-dropdown-list-0" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
+                            <div class="icon w-icon-dropdown-toggle" aria-hidden="true"></div>
+                            <div class="nav-text">Academics</div>
+                        </div>
+                        <nav class="w-dropdown-list" id="w-dropdown-list-0" aria-labelledby="w-dropdown-toggle-0">
+                            <a th:href="@{/programs}" href="#" class="nav-drop-down w-dropdown-link" tabindex="0">Programs</a><a href="#" th:href="@{/fees}"  class="nav-drop-down w-dropdown-link" tabindex="0">Fees</a>
+                        </nav>
+                    </div>
+                    <a href="#" th:href="@{/about-us}"  class="navbar-link-2 w-nav-link" style="max-width: 1200px;"><div class="nav-text">About Us</div></a><a href="#" class="navbar-link-2 w-nav-link" style="max-width: 1200px;"><div class="nav-text">Contact Us</div></a>
+                </nav>
+            </div>
+            <div class="w-nav-button" style="-webkit-user-select: text;" aria-label="menu" role="button" tabindex="0" aria-controls="w-nav-overlay-0" aria-haspopup="menu" aria-expanded="false">
+                <div class="w-icon-nav-menu"></div>
+            </div>
+        </div>
+        <div class="w-nav-overlay" data-wf-ignore="" id="w-nav-overlay-0"></div>
+        <div class="w-nav-overlay" data-wf-ignore="" id="w-nav-overlay-0"></div></div>
+</div>
+
+
+<div class="footer" th:fragment="footer" >
+    <div class="columns-2 f2wf-columns">
+        <div data-w-id="f238d38a-089e-433c-87c1-113a5038fe8b" class="column-4" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+            <div class="logo-wrapper">
+                <img src="/images/nav-logo.png" loading="lazy" srcset="
+                /images/nav-logo.png,
+                     https://uploads-ssl.webflow.com/642be28cd9b549e0fdc2fe53/64425c3b73b25b486ac02a95_ECGI%20Institute%20Logo-p-500.png  500w,
+                     https://uploads-ssl.webflow.com/642be28cd9b549e0fdc2fe53/64425c3b73b25b486ac02a95_ECGI%20Institute%20Logo-p-800.png  800w,
+                     https://uploads-ssl.webflow.com/642be28cd9b549e0fdc2fe53/64425c3b73b25b486ac02a95_ECGI%20Institute%20Logo.png       1195w
+                     " sizes="(max-width: 479px) 80vw, 200px" alt="" class="logo-2" width="200" height="200">
+            </div>
+        </div>
+        <div class="small-columns f2wf-small-columns">
+            <div data-w-id="f238d38a-089e-433c-87c1-113a5038fe8f" class="column-3" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+                <div class="content-3">
+                    <div class="text-7">HOME</div>
+                    <div class="footer-links">
+                        <div class="link">Programs</div>
+                        <div class="link">About</div>
+                    </div>
+                </div>
+            </div>
+            <div data-w-id="f238d38a-089e-433c-87c1-113a5038fe98" class="column-3" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+                <div class="content-3">
+                    <div class="text-7">ACADEMICS</div>
+                    <div class="footer-links">
+                        <div class="link">Programs</div>
+                        <div class="link">Fees</div>
+                        <div class="link">Applications</div>
+                    </div>
+                </div>
+            </div>
+            <div data-w-id="f238d38a-089e-433c-87c1-113a5038fea3" class="column-3" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+                <div class="content-3">
+                    <div class="text-7">ABOUT</div>
+                    <div class="footer-links">
+                        <div class="link">Profile</div>
+                        <div class="link">The Campus</div>
+                        <div class="link">Contact Us</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-w-id="f238d38a-089e-433c-87c1-113a5038feae" class="copyright" style="opacity: 1;">
+        <div class="text-8">Copyright © 2022 Company name</div>
+    </div>
+</div>
