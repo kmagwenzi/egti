@@ -13,7 +13,7 @@ server.port=${PORT:8080}
 # ━━━ DATABASE CONFIGURATION (PostgreSQL) ━━━
 # PRODUCTION: Set these as Render environment variables
 # LOCAL DEV: Replace with your local PostgreSQL credentials
-spring.datasource.url=${DATABASE_URL:jdbc:postgresql://localhost:5432/egti_local}
+spring.datasource.url=jdbc:${DATABASE_URL:postgresql://localhost:5432/egti_local}
 spring.datasource.username=${DB_USERNAME:your_db_username_here}
 spring.datasource.password=${DB_PASSWORD:your_db_password_here}
 spring.datasource.driver-class-name=org.postgresql.Driver
