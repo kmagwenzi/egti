@@ -1,0 +1,88 @@
+# ==============================================================================
+# EGTI CHURCH MANAGEMENT SYSTEM - CONFIGURATION TEMPLATE
+# ==============================================================================
+# INSTRUCTIONS:
+# 1. Copy this file to: application.properties
+# 2. Replace placeholder values with your actual credentials
+# 3. NEVER commit application.properties to Git (it's in .gitignore)
+# ==============================================================================
+
+# ━━━ SERVER CONFIGURATION ━━━
+server.port=${PORT:8080}
+
+# ━━━ DATABASE CONFIGURATION (PostgreSQL) ━━━
+# PRODUCTION: Set these as Render environment variables
+# LOCAL DEV: Replace with your local PostgreSQL credentials
+spring.datasource.url=${DATABASE_URL:jdbc:postgresql://localhost:5432/egti_local}
+spring.datasource.username=${DB_USERNAME:your_db_username_here}
+spring.datasource.password=${DB_PASSWORD:your_db_password_here}
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# HikariCP Connection Pool
+spring.datasource.hikari.maximum-pool-size=10
+spring.datasource.hikari.minimum-idle=5
+spring.datasource.hikari.connection-timeout=30000
+spring.datasource.hikari.idle-timeout=600000
+spring.datasource.hikari.max-lifetime=1800000
+
+# ━━━ JPA/HIBERNATE CONFIGURATION ━━━
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=false
+spring.jpa.properties.hibernate.format_sql=false
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+spring.jpa.properties.hibernate.jdbc.batch_size=20
+spring.jpa.properties.hibernate.order_inserts=true
+spring.jpa.properties.hibernate.order_updates=true
+
+# ━━━ MULTIPART FILE UPLOAD ━━━
+spring.servlet.multipart.enabled=true
+spring.servlet.multipart.max-file-size=10MB
+spring.servlet.multipart.max-request-size=10MB
+
+# ━━━ SECURITY CONFIGURATION ━━━
+# PRODUCTION: Set ADMIN_USERNAME and ADMIN_PASSWORD in Render
+# LOCAL DEV: Replace with your preferred admin credentials
+spring.security.user.name=${ADMIN_USERNAME:admin}
+spring.security.user.password=${ADMIN_PASSWORD:changeme}
+
+# ━━━ SESSION MANAGEMENT ━━━
+server.servlet.session.timeout=30m
+server.servlet.session.cookie.http-only=true
+server.servlet.session.cookie.secure=true
+server.servlet.session.cookie.same-site=strict
+server.servlet.session.cookie.name=EGTI_SESSION
+
+# ━━━ APPLICATION SETTINGS ━━━
+spring.application.name=EGTI
+
+# ━━━ THYMELEAF CONFIGURATION ━━━
+spring.thymeleaf.cache=true
+spring.thymeleaf.enabled=true
+spring.thymeleaf.prefix=classpath:/templates/
+spring.thymeleaf.suffix=.html
+spring.thymeleaf.mode=HTML
+spring.thymeleaf.encoding=UTF-8
+
+# ━━━ STATIC RESOURCES ━━━
+spring.web.resources.static-locations=classpath:/static/
+spring.web.resources.cache.cachecontrol.max-age=86400
+spring.web.resources.cache.cachecontrol.must-revalidate=true
+
+# ━━━ LOGGING ━━━
+logging.level.root=INFO
+logging.level.org.springframework.web=INFO
+logging.level.org.hibernate=WARN
+logging.level.org.hibernate.SQL=WARN
+logging.level.zw.co.egti=INFO
+logging.level.org.springframework.security=INFO
+
+# ==============================================================================
+# SECURITY REMINDERS
+# ==============================================================================
+# ✅ Add application.properties to .gitignore
+# ✅ Use strong passwords (16+ characters, mixed case, numbers, symbols)
+# ✅ Configure environment variables in Render dashboard
+# ✅ Rotate credentials regularly
+# ✅ Never commit real credentials to Git
+# ==============================================================================
