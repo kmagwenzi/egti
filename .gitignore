@@ -77,6 +77,12 @@ yarn-error.log*
 .env.local
 .env.production
 
+# Project-specific files
+"EGTI - Final Onslught/"
+
+# Application properties (contains sensitive credentials)
+backend/EGTI/src/main/resources/application.properties
+
 # Temporary files
 *.tmp
 *.temp

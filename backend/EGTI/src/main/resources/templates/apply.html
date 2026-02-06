@@ -47,6 +47,9 @@
       href="https://uploads-ssl.webflow.com/642be28cd9b549e0fdc2fe53/6458fe4976ac15fd8e93b208_favicon-256x256.png"
       rel="apple-touch-icon"
     />
+    <!-- CSRF Meta Tags for Spring Security -->
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
   </head>
   <body>
     <div
@@ -204,16 +207,15 @@
                 </p>
                 <div>
                   <p class="apply-point">
-                    Method 1 (preferable for poor internet connectivity)
+                    Method 1 (preferable for good internet connectivity)
                   </p>
                   <ul role="list">
                     <li class="apply-list-item">
-                      Download the application form and send your application to
-                      the following email whatever@domain.conm
+                      Apply using online  form below
                     </li>
                   </ul>
                   <p class="apply-point">
-                    Method 1 (preferable for poor internet connectivity)
+                    Method 2 (preferable for poor internet connectivity)
                   </p>
                   <ul role="list">
                     <li class="apply-list-item">
@@ -263,7 +265,9 @@
           </h2>
         </div>
 
-        <form action="http://localhost:4040/api/apply" method="post" enctype="multipart/form-data">
+        <form th:action="@{/api/apply}" method="post" enctype="multipart/form-data">
+          <!-- CSRF Token -->
+          <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
           <div
             data-w-id="175b3d3e-4bc9-cc29-19d4-8a6d9a67fe4c"
             style="

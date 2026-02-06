@@ -1,25 +1,24 @@
 # ==============================================================================
-# EGTI CHURCH MANAGEMENT SYSTEM - SPRING BOOT CONFIGURATION
+# EGTI CHURCH MANAGEMENT SYSTEM - CONFIGURATION TEMPLATE
 # ==============================================================================
-# ⚡ TWABAM-SECURED CONFIGURATION ⚡
-# Generated: February 6, 2026
-# Environment: Production (Render.com)
-# Security Level: BANK-GRADE 🔐
+# INSTRUCTIONS:
+# 1. Copy this file to: application.properties
+# 2. Replace placeholder values with your actual credentials
+# 3. NEVER commit application.properties to Git (it's in .gitignore)
 # ==============================================================================
 
 # ━━━ SERVER CONFIGURATION ━━━
-# Render injects PORT via environment variable
 server.port=${PORT:8080}
 
 # ━━━ DATABASE CONFIGURATION (PostgreSQL) ━━━
-# 🔐 SECURITY: ALL credentials now in environment variables
-# Render PostgreSQL auto-provides DATABASE_URL, but we override for clarity
+# PRODUCTION: Set these as Render environment variables
+# LOCAL DEV: Replace with your local PostgreSQL credentials
 spring.datasource.url=${DATABASE_URL:jdbc:postgresql://localhost:5432/egti_local}
-spring.datasource.username=${DB_USERNAME:local_user}
-spring.datasource.password=${DB_PASSWORD:local_password}
+spring.datasource.username=${DB_USERNAME:your_db_username_here}
+spring.datasource.password=${DB_PASSWORD:your_db_password_here}
 spring.datasource.driver-class-name=org.postgresql.Driver
 
-# HikariCP Connection Pool (Production Optimized)
+# HikariCP Connection Pool
 spring.datasource.hikari.maximum-pool-size=10
 spring.datasource.hikari.minimum-idle=5
 spring.datasource.hikari.connection-timeout=30000
@@ -28,14 +27,10 @@ spring.datasource.hikari.max-lifetime=1800000
 
 # ━━━ JPA/HIBERNATE CONFIGURATION ━━━
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
-spring.jpa.hibernate.ddl-auto=update 
+spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=false
 spring.jpa.properties.hibernate.format_sql=false
-
-# PostgreSQL specific settings
 spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
-
-# Performance optimizations
 spring.jpa.properties.hibernate.jdbc.batch_size=20
 spring.jpa.properties.hibernate.order_inserts=true
 spring.jpa.properties.hibernate.order_updates=true
@@ -46,24 +41,22 @@ spring.servlet.multipart.max-file-size=10MB
 spring.servlet.multipart.max-request-size=10MB
 
 # ━━━ SECURITY CONFIGURATION ━━━
-# 🔐 Externalized credentials for production
+# PRODUCTION: Set ADMIN_USERNAME and ADMIN_PASSWORD in Render
+# LOCAL DEV: Replace with your preferred admin credentials
 spring.security.user.name=${ADMIN_USERNAME:admin}
 spring.security.user.password=${ADMIN_PASSWORD:changeme}
 
 # ━━━ SESSION MANAGEMENT ━━━
-# ⚡ TWABAM Security Enhancement
 server.servlet.session.timeout=30m
 server.servlet.session.cookie.http-only=true
 server.servlet.session.cookie.secure=true
 server.servlet.session.cookie.same-site=strict
 server.servlet.session.cookie.name=EGTI_SESSION
-server.servlet.session.cookie.max-age=1800
 
 # ━━━ APPLICATION SETTINGS ━━━
 spring.application.name=EGTI
 
 # ━━━ THYMELEAF CONFIGURATION ━━━
-# ⚡ Production-optimized: cache ENABLED for performance
 spring.thymeleaf.cache=true
 spring.thymeleaf.enabled=true
 spring.thymeleaf.prefix=classpath:/templates/
@@ -71,13 +64,12 @@ spring.thymeleaf.suffix=.html
 spring.thymeleaf.mode=HTML
 spring.thymeleaf.encoding=UTF-8
 
-# ━━━ STATIC RESOURCES CONFIGURATION ━━━
+# ━━━ STATIC RESOURCES ━━━
 spring.web.resources.static-locations=classpath:/static/
 spring.web.resources.cache.cachecontrol.max-age=86400
 spring.web.resources.cache.cachecontrol.must-revalidate=true
 
 # ━━━ LOGGING ━━━
-# Production-optimized: Reduced verbosity
 logging.level.root=INFO
 logging.level.org.springframework.web=INFO
 logging.level.org.hibernate=WARN
@@ -86,20 +78,11 @@ logging.level.zw.co.egti=INFO
 logging.level.org.springframework.security=INFO
 
 # ==============================================================================
-# SECURITY HEADERS
+# SECURITY REMINDERS
 # ==============================================================================
-# Configured programmatically in SecurityConfig.java:
-# - Content-Security-Policy (CSP)
-# - HTTP Strict Transport Security (HSTS)
-# - X-Frame-Options: DENY
-# - X-Content-Type-Options: nosniff
-# - X-XSS-Protection: 1; mode=block
-# - Referrer-Policy: strict-origin-when-cross-origin
-# ==============================================================================
-
-# ==============================================================================
-# ⚡ TWABAM SECURITY COMPLETE ⚡
-# All sensitive credentials secured in environment variables
-# Production performance optimizations applied
-# Ready for deployment to Render.com
+# ✅ Add application.properties to .gitignore
+# ✅ Use strong passwords (16+ characters, mixed case, numbers, symbols)
+# ✅ Configure environment variables in Render dashboard
+# ✅ Rotate credentials regularly
+# ✅ Never commit real credentials to Git
 # ==============================================================================
