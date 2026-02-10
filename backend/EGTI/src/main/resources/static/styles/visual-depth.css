@@ -1,0 +1,52 @@
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* VISUAL RECESSION TECHNIQUE (GREY-OUT METHOD)                             */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* 
+   This file implements the "Grey-Out" technique to create visual depth and focus.
+   
+   PRINCIPLE:
+   - Inactive/Background areas are "muted" (desaturated, slightly darkened).
+   - Active/Content areas are "vibrant" (full saturation, high contrast).
+   
+   RESULT:
+   - Guided user attention (Hierarchy: 1. Hero, 2. Content, 3. Background).
+   - "Pop" effect for cards and key information.
+   - Reduction of visual noise from decorative elements.
+*/
+
+/* 
+   1. BACKGROUND MUTING
+   Reduces the saturation and brightness of background sections.
+   This pushes them "back" visually, allowing content to sit "forward".
+*/
+.bg-muted {
+  filter: saturate(0.6) brightness(0.95) contrast(0.92);
+  transition: filter 0.3s ease;
+}
+
+/* 
+   2. CONTENT VIBRANCY RESET
+   Crucial: Child elements inherit filters from parents. 
+   We must reset the filter on content containers so text/cards remain sharp.
+*/
+.content-vibrant {
+  filter: none; /* Resets the parent .bg-muted filter */
+}
+
+/* 
+   3. DECORATIVE ELEMENT TAMING (Specific for Apply Today section)
+   Decorative stripes often compete with text. We drastically reduce their presence.
+*/
+.decorative-muted {
+  opacity: 0.15; /* Heavy reduction from 1.0 */
+  filter: saturate(0.3); /* Remove most color */
+}
+
+/* 
+   4. BACKGROUND IMAGE SOFTENING
+   Background images can make text hard to read. We soften them.
+*/
+.image-muted {
+  opacity: 0.3;
+  filter: grayscale(0.8) blur(3px); /* Soft focus effect */
+}
