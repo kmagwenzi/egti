@@ -215,10 +215,15 @@
   padding: 24px 12px;
   text-decoration: none;
   display: flex;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar-link:hover {
-  background-color: var(--_egti---primary-navy);
+  background-color: #191e43;
+  color: #fff;
+}
+
+.navbar-link:hover .text {
   color: #fff;
 }
 
@@ -233,11 +238,26 @@
   font-weight: 700;
   line-height: 150%;
   text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .text:hover {
-  background-color: var(--_egti---primary-navy);
-  color: var(--_egti---primary-navy);
+  background-color: #191e43;
+  color: #fff;
+}
+
+.w-dropdown-toggle {
+  color: #191e43;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.w-dropdown-toggle:hover {
+  background-color: #191e43;
+  color: #fff;
+}
+
+.w-dropdown-toggle:hover .text-block-4 {
+  color: #fff;
 }
 
 .navbar-frame {
@@ -3410,6 +3430,12 @@
 
 .dropdown-link {
   background-color: #fff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-link:hover {
+  background-color: #191e43;
+  color: #fff;
 }
 
 .navbar-2 {

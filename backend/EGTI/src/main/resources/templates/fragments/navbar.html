@@ -31,7 +31,7 @@
                     />
                   </div>
                   <nav role="navigation" class="navbar-menu w-nav-menu">
-                    <a href="#" class="navbar-link w-nav-link">
+                    <a th:href="@{/}" class="navbar-link w-nav-link">
                       <div class="text">Home</div>
                     </a>
                     <div
@@ -47,13 +47,11 @@
                         <div class="text-block-4">Academics</div>
                       </div>
                       <nav class="dropdown-list w-dropdown-list">
-                        <a href="#" class="dropdown-link w-dropdown-link"
-                          >Fees</a
-                        >
-                        <a href="#" class="w-dropdown-link">Progms</a>
+                        <a th:href="@{/fees}" class="dropdown-link w-dropdown-link">Fees</a>
+                        <a th:href="@{/programs}" class="dropdown-link w-dropdown-link">Programs</a>
                       </nav>
                     </div>
-                    <a href="#" class="navbar-link w-nav-link">
+                    <a th:href="@{/about}" class="navbar-link w-nav-link">
                       <div class="text">About Us</div>
                     </a>
                     <a href="#" class="navbar-link w-nav-link">
