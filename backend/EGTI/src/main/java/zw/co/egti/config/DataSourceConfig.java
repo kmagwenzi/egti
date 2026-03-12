@@ -4,6 +4,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 
 import javax.sql.DataSource;
@@ -11,6 +12,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 @Configuration
+@Profile("!dev")  // Only active when 'dev' profile is NOT active
 public class DataSourceConfig {
 
     private final Environment env;
@@ -20,7 +22,7 @@ public class DataSourceConfig {
     }
 
     @Bean
-    @ConfigurationProperties(prefix = "spring.datasource.hikari")
+    @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
         String databaseUrl = env.getProperty("DATABASE_URL");
         if (databaseUrl != null && databaseUrl.startsWith("postgresql://")) {
@@ -33,7 +35,8 @@ public class DataSourceConfig {
                 String host = dbUri.getHost();
                 int port = dbUri.getPort() != -1 ? dbUri.getPort() : 5432;
                 String db = dbUri.getPath().replaceFirst("/", "");
-                String jdbcUrl = String.format("jdbc:postgresql://%s:%d/%s?sslmode=require", host, port, db);
+                // Remove sslmode=require for local development
+                String jdbcUrl = String.format("jdbc:postgresql://%s:%d/%s", host, port, db);
                 HikariDataSource dataSource = new HikariDataSource();
                 dataSource.setJdbcUrl(jdbcUrl);
                 dataSource.setUsername(username);
@@ -44,8 +47,11 @@ public class DataSourceConfig {
                 throw new IllegalArgumentException("Invalid DATABASE_URL", e);
             }
         }
-        // Fallback to default Spring Boot auto-configuration
+        // Fallback: Let Spring Boot auto-configuration handle it
+        // Return null to let Spring Boot create the DataSource via auto-configuration
+        // Actually, we need to return a DataSource, so create one that will be configured by @ConfigurationProperties
         HikariDataSource dataSource = new HikariDataSource();
+        // Don't set URL/username/password here - let @ConfigurationProperties bind them
         return dataSource;
     }
 }

@@ -19,7 +19,7 @@ public class SecurityConfiguration {
             // Authorization Rules
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/", "/home", "/about-us", "/apply", "/fees", "/programs",
-                                 "/static/**", "/images/**", "/css/**", "/js/**", "/uploads/**",
+                                 "/static/**", "/images/**", "/css/**", "/js/**", "/styles/**", "/scripts/**", "/bootstrap/**", "/uploads/**",
                                  "/login", "/error", "/webjars/**").permitAll()
                 .requestMatchers("/applications/**").authenticated()
                 .anyRequest().authenticated()
