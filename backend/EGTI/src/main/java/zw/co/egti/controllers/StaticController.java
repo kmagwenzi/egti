@@ -5,6 +5,7 @@
 package zw.co.egti.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
@@ -14,34 +15,34 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class StaticController {
     
-    @GetMapping("/about-us")
-    public String viewAboutUs(){
-       
-        return "about-us";
-    }
-    
-    @GetMapping("/apply")
-    public String viewApply(){
-       
-        return "apply";
-    }
-
-    @GetMapping("/fees")
-    public String viewFees(){
-       
-        return "fees";
-    }
-    
-    @GetMapping(value={"", "/", "/home"})
-    public String viewHome(){
-       
+     @GetMapping("/")
+    public String home(Model model) {
+        model.addAttribute("pageTitle", "Home - EGTI Zimbabwe");
         return "index";
     }
     
     @GetMapping("/programs")
-    public String viewPrograms(){
-       
+    public String programs(Model model) {
+        model.addAttribute("pageTitle", "Programs - EGTI Zimbabwe");
         return "programs";
+    }
+    
+    @GetMapping("/fees")
+    public String fees(Model model) {
+        model.addAttribute("pageTitle", "Fees - EGTI Zimbabwe");
+        return "fees";
+    }
+    
+    @GetMapping("/apply")
+    public String application(Model model) {
+        model.addAttribute("pageTitle", "Application - EGTI Zimbabwe");
+        return "apply";
+    }
+    
+    @GetMapping("/about")
+    public String about(Model model) {
+        model.addAttribute("pageTitle", "About Us - EGTI Zimbabwe");
+        return "about";
     }
     
     

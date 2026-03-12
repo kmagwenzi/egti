@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      th:attr="data-wf-page=${wfPageId ?: '695d42f4411553ad2ad82931'}"
+      data-wf-site="695d42f3411553ad2ad8291f">
+<head>
   <meta charset="utf-8">
-  <title>EGTI Zimbabwe | Premier Theological Education Institute</title>
+  <title layout:title-pattern="$CONTENT_TITLE">EGTI Zimbabwe | Premier Theological Education Institute</title>
   <meta content="Train for ministry, leadership and service with Zimbabwe&#x27;s premier theological institute. Diploma, degree, masters and PhD programs from $600/semester." name="description">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
@@ -18,12 +21,14 @@ head>
   <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
   <link href="images/webclip.png" rel="apple-touch-icon">
 </head>
-<body>
+<body class="body-4">
     <!-- Navigation Fragment -->
     <div th:replace="~{fragments/navbar :: navbar}"></div>
     
     <!-- Main Content (each page inserts here) -->
-    <main th:replace="${content}"></main>
+    <div layout:fragment="content">
+        <!-- Content will be inserted here by child templates -->
+    </div>
     
     <!-- Footer Fragment -->
     <div th:replace="~{fragments/footer :: footer}"></div>

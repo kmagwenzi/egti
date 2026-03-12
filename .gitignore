@@ -97,4 +97,5 @@ backend/EGTI/src/main/resources/application.properties
 
 # System files
 *.swp
-*~egti.webflow/
+*~
+egti.webflow/

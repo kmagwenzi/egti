@@ -55,19 +55,20 @@ public class ApplicationController {
     
     
 
-    @PostMapping("/apply")
-    public ResponseEntity<Application> saveApplication(@ModelAttribute Application application, final @RequestParam("file") MultipartFile file) { //
+    @PostMapping("/apply/submit")
+    public String submitApplication(@ModelAttribute Application application, 
+                                   @RequestParam("file") MultipartFile file,
+                                   Model model) {
 
-        //log.info("file = " + file.toString());
         log.info("application = " + application.toString());
         log.info("name = " + application.getName());
         log.info("gender = " + application.getGender());
         log.info("dateOfBirth = " + application.getDateOfBirth());
 
         try {
-            HttpHeaders headers = new HttpHeaders();
             if (application == null) {
-                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+                model.addAttribute("error", "Application data is required");
+                return "apply";
             }
 
             // Ensure upload directory exists
@@ -77,7 +78,8 @@ public class ApplicationController {
             // Sanitize filename
             String originalFileName = file.getOriginalFilename();
             if (originalFileName == null || originalFileName.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+                model.addAttribute("error", "Passport photo is required");
+                return "apply";
             }
             String fileName = new File(originalFileName).getName(); // strip path
             // Generate unique filename to avoid overwriting
@@ -94,18 +96,18 @@ public class ApplicationController {
             boolean status = applicationService.saveApplication(application);
             if (status) {
                 log.info("Application Created");
-                headers.add("Application Saved With Image - ", uniqueFileName);
-                return new ResponseEntity<>(application, HttpStatus.CREATED);
+                model.addAttribute("message", "Application submitted successfully!");
+                return "application-success";
             } else {
                 log.info("Application creation failed");
+                model.addAttribute("error", "Failed to save application. Please try again.");
+                return "apply";
             }
         } catch (IOException e) {
             e.printStackTrace();
-            // log.info("Exception: " + e);
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            model.addAttribute("error", "Error processing file: " + e.getMessage());
+            return "apply";
         }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
     }
 
     @GetMapping("/applications")

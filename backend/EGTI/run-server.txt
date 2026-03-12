@@ -1,0 +1,5 @@
+fuser -k 8080/tcp || true
+pkill -f "spring-boot:run" || true
+mvn clean compile
+mvn spring-boot:run -Dspring-boot.run.profiles=dev
+curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/
