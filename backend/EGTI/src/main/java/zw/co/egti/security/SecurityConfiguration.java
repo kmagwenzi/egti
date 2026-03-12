@@ -18,7 +18,7 @@ public class SecurityConfiguration {
         http
             // Authorization Rules
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/", "/home", "/about-us", "/apply", "/fees", "/programs",
+                .requestMatchers("/", "/home", "/about", "/about-us", "/apply", "/fees", "/programs",
                                  "/static/**", "/images/**", "/css/**", "/js/**", "/styles/**", "/scripts/**", "/bootstrap/**", "/uploads/**",
                                  "/login", "/error", "/webjars/**").permitAll()
                 .requestMatchers("/applications/**").authenticated()
@@ -58,9 +58,9 @@ public class SecurityConfiguration {
                 // Content Security Policy
                 .contentSecurityPolicy(csp -> csp
                     .policyDirectives("default-src 'self'; " +
-                        "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://code.jquery.com; " +
-                        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; " +
-                        "font-src 'self' https://fonts.gstatic.com; " +
+                        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://code.jquery.com https://d3e54v103j8qbb.cloudfront.net https://ajax.googleapis.com https://cdn.prod.website-files.com; " +
+                        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com http://fonts.googleapis.com https://cdn.jsdelivr.net; " +
+                        "font-src 'self' data: https://fonts.gstatic.com http://fonts.gstatic.com; " +
                         "img-src 'self' data: https:; " +
                         "frame-ancestors 'none'")
                 )
