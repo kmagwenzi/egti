@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<body>
-    <div th:fragment="footer">
-    
+<div th:fragment="footer" xmlns:th="http://www.thymeleaf.org">
+
    <!-- Footer Fragment -->
       
     <footer class="footer-2">
     <div class="columns">
-      <div class="logo-wrapper"><img width="200" height="200" alt="" src="images/EGTI-Logo.svg" loading="lazy" class="logo-2"></div>
+      <a th:href="@{/}" class="logo-wrapper"><img width="200" height="200" alt="EGTI Zimbabwe Home" src="images/EGTI-Logo.svg" loading="lazy" class="logo-2"></a>
       <div class="links-wraper f2wf-small-columns">
         <div class="column-11">
           <div class="content-style-4">
@@ -45,7 +42,4 @@
     </div>
   </footer>
 
-    </div>
-</body>
-
-</html>
+</div>

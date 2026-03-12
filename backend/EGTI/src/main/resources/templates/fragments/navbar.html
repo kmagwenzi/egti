@@ -1,8 +1,5 @@
-<!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
-  <body>
-    <div th:fragment="navbar">
-      <!-- navbar fragment-->
+<div th:fragment="navbar" xmlns:th="http://www.thymeleaf.org">
+  <!-- navbar fragment-->
 
       <div
         data-animation="default"
@@ -20,22 +17,22 @@
             <div class="navbar">
               <div class="navbarcontainer w-container">
                 <div class="navbar-content">
-                  <div class="navbar-brand">
+                  <a th:href="@{/}" class="navbar-brand">
                     <img
                       width="65"
                       height="65"
-                      alt=""
+                      alt="EGTI Zimbabwe Home"
                       src="images/Logo.png"
                       loading="lazy"
                       class="logo"
                     />
-                  </div>
+                  </a>
                   <nav role="navigation" class="navbar-menu w-nav-menu">
                     <a th:href="@{/}" class="navbar-link w-nav-link">
                       <div class="text">Home</div>
                     </a>
                     <div
-                      data-hover="true"
+                      data-hover="1"
                       data-delay="100"
                       class="text w-dropdown"
                     >
@@ -68,7 +65,4 @@
         </nav>
       </div>
 
-    </div>
-    
-  </body>
-</html>
+</div>
