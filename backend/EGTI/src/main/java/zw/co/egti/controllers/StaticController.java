@@ -34,7 +34,9 @@ public class StaticController {
     }
     
     @GetMapping("/apply")
-    public String application(Model model) {
+    public String application(Model model, jakarta.servlet.http.HttpServletRequest request) {
+        // Force session creation so Thymeleaf CSRF token generation does not crash on commit
+        request.getSession(true);
         model.addAttribute("pageTitle", "Application - EGTI Zimbabwe");
         return "apply";
     }

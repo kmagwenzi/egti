@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="~{layout}">
+    layout:decorate="~{layout}"
+    th:with="wfPageId='6999a8e58abe7d4c1b019daa'">
     <head>
         <title>Applications - EGTI Zimbabwe</title>
         <th:block layout:fragment="head">
@@ -18,7 +19,6 @@
                 property="twitter:description">
             <meta property="og:type" content="website">
             <meta content="summary_large_image" name="twitter:card">
-            <th:block th:with="wfPageId='6999a8e58abe7d4c1b019daa'"></th:block>
         </th:block>
     </head>
     <body class="body-5">

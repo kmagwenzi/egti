@@ -31,28 +31,17 @@
                     <a th:href="@{/}" class="navbar-link w-nav-link">
                       <div class="text">Home</div>
                     </a>
-                    <div
-                      data-hover="1"
-                      data-delay="100"
-                      class="text w-dropdown"
-                    >
-                      <div class="dropdown-toggle w-dropdown-toggle">
-                        <div
-                          data-wf-target='[[["67bcdb9b-cd32-1d34-1c83-c663986755a6","366d37f6-746c-ee65-0650-012a450d6f8d"],["a588601d-2dec-9a81-de7b-43c943f48c6b"]]]'
-                          class="icon w-icon-dropdown-toggle"
-                        ></div>
-                        <div class="text-block-4">Academics</div>
-                      </div>
-                      <nav class="dropdown-list w-dropdown-list">
-                        <a th:href="@{/fees}" class="dropdown-link w-dropdown-link">Fees</a>
-                        <a th:href="@{/programs}" class="dropdown-link w-dropdown-link">Programs</a>
-                      </nav>
-                    </div>
+                    <a th:href="@{/programs}" class="navbar-link w-nav-link">
+                      <div class="text">Programs</div>
+                    </a>
+                    <a th:href="@{/fees}" class="navbar-link w-nav-link">
+                      <div class="text">Fees</div>
+                    </a>
+                    <a th:href="@{/apply}" class="navbar-link w-nav-link">
+                      <div class="text">Apply</div>
+                    </a>
                     <a th:href="@{/about}" class="navbar-link w-nav-link">
                       <div class="text">About Us</div>
-                    </a>
-                    <a href="#" class="navbar-link w-nav-link">
-                      <div class="text">Contact Us</div>
                     </a>
                   </nav>
                 </div>

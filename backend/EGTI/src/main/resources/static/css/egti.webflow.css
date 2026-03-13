@@ -3461,6 +3461,10 @@
   background-size: auto;
 }
 
+.w-dropdown:hover .dropdown-list {
+  display: block;
+}
+
 .dropdown-list.w--open {
   background-color: #fff;
   background-image: linear-gradient(#00000080, #00000080);
